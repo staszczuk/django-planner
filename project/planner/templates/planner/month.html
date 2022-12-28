@@ -1,12 +1,30 @@
+{% load static %}
+
 <!doctype html>
 <html>
 
 <head>
     <title>month</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'planner/style.css' %}">
 </head>
 
 <body>
     <h1>{{ year }}/{{ month }}</h1>
+    <div class="days">
+        {% for key, day in days.items %}
+        <div class="day">
+            <p>{{ day.date.day }}</p>
+            {% if day.events %}
+            <ul class="events">
+                {% for event in day.events %}
+                <li class="event">{{ event.name }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
 </body>
 
 </html>
