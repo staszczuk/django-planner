@@ -6,25 +6,30 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .models import Event
+from . import utils
 
 # Create your views here.
 
 
 def month(request, year, month):
     events = Event.objects.filter(date__year=year, date__month=month)
-    calendar = Calendar()
+    cal = Calendar()
     days = {}
-    for date in calendar.itermonthdates(year, month):
+    for date in cal.itermonthdates(year, month):
         days.update({f'{date}': {
             'date': date,
             'events': [],
         }})
     for event in events:
         days.get(f'{event.date}').get('events').append(event)
+    prev = utils.prev_month(year, month)
+    next = utils.next_month(year, month)
     return render(request, 'planner/month.html', {
         'year': year,
         'month': month,
         'days': days,
+        'prev': prev,
+        'next': next,
     })
 
 

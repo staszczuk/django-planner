@@ -4,6 +4,8 @@
 
 {% block content %}
 <h1>{{ year }}/{{ month }}</h1>
+<a href="{% url 'planner:month' prev.year prev.month %}">prev</a>
+<a href="{% url 'planner:month' next.year next.month %}">next</a>
 <div class="days">
     {% for key, day in days.items %}
     {% if day.date.month == month %}
