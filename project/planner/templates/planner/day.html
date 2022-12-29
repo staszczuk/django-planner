@@ -11,7 +11,7 @@
         <p>{{ event.name }}</p>
         <form action="{% url 'planner:delete_event' year month day %}" method="post">
             {% csrf_token %}
-            <input type="hidden" name="eventName" value="{{ event.name }}">
+            <input type="hidden" name="event--name" value="{{ event.name }}">
             <input type="submit" value="remove">
         </form>
     </li>
@@ -23,7 +23,7 @@
 <h3>add event</h3>
 <form action="{% url 'planner:add_event' year month day %}" method="post">
     {% csrf_token %}
-    <input type="text" name="eventName">
+    <input type="text" name="event--name">
     <input type="submit" value="add">
 </form>
 <a href="{% url 'planner:month' year month %}">back</a>

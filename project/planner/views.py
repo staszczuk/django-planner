@@ -44,13 +44,14 @@ def day(request, year, month, day):
 
 
 def add_event(request, year, month, day):
-    event = Event(date=date(year, month, day), name=request.POST['eventName'])
+    event = Event(date=date(year, month, day),
+                  name=request.POST['event--name'])
     event.save()
     return HttpResponseRedirect(reverse('planner:day', args=(year, month, day)))
 
 
 def delete_event(request, year, month, day):
     event = get_object_or_404(Event, date=date(
-        year, month, day), name=request.POST['eventName'])
+        year, month, day), name=request.POST['event--name'])
     event.delete()
     return HttpResponseRedirect(reverse('planner:day', args=(year, month, day)))
