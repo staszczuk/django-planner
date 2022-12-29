@@ -14,9 +14,12 @@ from . import utils
 def month(request, year, month):
     cal = Calendar()
     weeks = []
+    current_week_index = 0
     for index, week in enumerate(cal.monthdatescalendar(year, month)):
         weeks.append([])
         for day in week:
+            if day == date.today():
+                current_week_index = index
             weeks[index].append({
                 'date': day,
                 'events': Event.objects.filter(date=day),
@@ -27,6 +30,7 @@ def month(request, year, month):
         'year': year,
         'month': month,
         'weeks': weeks,
+        'current_week_index': current_week_index,
         'prev': prev,
         'next': next,
     })

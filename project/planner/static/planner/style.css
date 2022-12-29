@@ -4,11 +4,25 @@
 }
 
 .week {
+    display: none;
+}
+
+.week--active {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
 }
 
 .day {
     border-top: 1px solid black;
     border-left: 1px solid black;
+}
+
+@media (min-width: 576px) {
+    .week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .nav {
+        display: none;
+    }
 }

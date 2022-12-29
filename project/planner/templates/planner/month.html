@@ -6,9 +6,17 @@
 <h1>{{ year }}/{{ month }}</h1>
 <a href="{% url 'planner:month' prev.year prev.month %}">prev</a>
 <a href="{% url 'planner:month' next.year next.month %}">next</a>
+<div class="nav">
+    {% for week in weeks %}
+    <button onclick="switchWeek('week--{{ week.0.date.isoformat }}')">
+        {{ week.0.date.day }} - {{ week.6.date.day }}
+    </button>
+    {% endfor %}
+</div>
 <div class="month">
     {% for week in weeks %}
-    <div class="week">
+    <div class="week {% if current_week_index == forloop.counter0 %}week--active{% endif %}"
+        id="week--{{ week.0.date.isoformat }}">
         {% for day in week %}
         {% if day.date.month == month %}
         <div class="day">
