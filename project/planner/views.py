@@ -12,22 +12,21 @@ from . import utils
 
 
 def month(request, year, month):
-    events = Event.objects.filter(date__year=year, date__month=month)
     cal = Calendar()
-    days = {}
-    for date in cal.itermonthdates(year, month):
-        days.update({f'{date}': {
-            'date': date,
-            'events': [],
-        }})
-    for event in events:
-        days.get(f'{event.date}').get('events').append(event)
+    weeks = []
+    for index, week in enumerate(cal.monthdatescalendar(year, month)):
+        weeks.append([])
+        for day in week:
+            weeks[index].append({
+                'date': day,
+                'events': Event.objects.filter(date=day),
+            })
     prev = utils.prev_month(year, month)
     next = utils.next_month(year, month)
     return render(request, 'planner/month.html', {
         'year': year,
         'month': month,
-        'days': days,
+        'weeks': weeks,
         'prev': prev,
         'next': next,
     })

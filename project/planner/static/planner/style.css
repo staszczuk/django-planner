@@ -1,8 +1,11 @@
-.days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.month {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
+}
+
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 }
 
 .day {

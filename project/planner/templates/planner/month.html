@@ -6,26 +6,28 @@
 <h1>{{ year }}/{{ month }}</h1>
 <a href="{% url 'planner:month' prev.year prev.month %}">prev</a>
 <a href="{% url 'planner:month' next.year next.month %}">next</a>
-<div class="days">
-    {% for key, day in days.items %}
-    {% if day.date.month == month %}
-    <div class="day">
-        <p>
-            <a href="{% url 'planner:day' year month day.date.day %}">{{ day.date.day }}</a>
-        </p>
-        {% if day.events %}
-        <ul class="events">
-            {% for event in day.events %}
-            <li class="event">{{ event.name }}</li>
-            {% endfor %}
-        </ul>
+<div class="month">
+    {% for week in weeks %}
+    <div class="week">
+        {% for day in week %}
+        {% if day.date.month == month %}
+        <div class="day">
+            <p>{{ day.date.day }}</p>
+            {% if day.events %}
+            <ul class="events">
+                {% for event in day.events %}
+                <li class="event">{{ event.name }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="day">
+            <p>{{ day.date.month }}/{{ day.date.day }}</p>
+        </div>
         {% endif %}
+        {% endfor %}
     </div>
-    {% else %}
-    <div class="day">
-        <p>{{ day.date.day }}</p>
-    </div>
-    {% endif %}
     {% endfor %}
 </div>
 {% endblock %}
