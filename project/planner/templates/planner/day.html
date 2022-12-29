@@ -1,0 +1,16 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}day{% endblock %}
+
+{% block content %}
+<h1>{{ year }}/{{ month }}/{{ day }}</h1>
+{% if events %}
+<ul class="events">
+    {% for event in events %}
+    <li class="event">{{ event.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<h2>no events</h2>
+{% endif %}
+{% endblock %}

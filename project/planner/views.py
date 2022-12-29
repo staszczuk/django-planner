@@ -23,3 +23,14 @@ def month(request, year, month):
         'month': month,
         'days': days,
     })
+
+
+def day(request, year, month, day):
+    events = Event.objects.filter(
+        date__year=year, date__month=month, date__day=day)
+    return render(request, 'planner/day.html', {
+        'year': year,
+        'month': month,
+        'day': day,
+        'events': events,
+    })
