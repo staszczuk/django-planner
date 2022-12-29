@@ -7,10 +7,24 @@
 {% if events %}
 <ul class="events">
     {% for event in events %}
-    <li class="event">{{ event.name }}</li>
+    <li class="event">
+        <p>{{ event.name }}</p>
+        <form action="{% url 'planner:delete_event' year month day %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="eventName" value="{{ event.name }}">
+            <input type="submit" value="remove">
+        </form>
+    </li>
     {% endfor %}
 </ul>
 {% else %}
 <h2>no events</h2>
 {% endif %}
+<h3>add event</h3>
+<form action="{% url 'planner:add_event' year month day %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="eventName">
+    <input type="submit" value="add">
+</form>
+<a href="{% url 'planner:month' year month %}">back</a>
 {% endblock %}

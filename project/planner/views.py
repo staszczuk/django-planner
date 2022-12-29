@@ -1,6 +1,9 @@
 from calendar import Calendar
+from datetime import date
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 from .models import Event
 
@@ -34,3 +37,16 @@ def day(request, year, month, day):
         'day': day,
         'events': events,
     })
+
+
+def add_event(request, year, month, day):
+    event = Event(date=date(year, month, day), name=request.POST['eventName'])
+    event.save()
+    return HttpResponseRedirect(reverse('planner:day', args=(year, month, day)))
+
+
+def delete_event(request, year, month, day):
+    event = get_object_or_404(Event, date=date(
+        year, month, day), name=request.POST['eventName'])
+    event.delete()
+    return HttpResponseRedirect(reverse('planner:day', args=(year, month, day)))
