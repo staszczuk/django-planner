@@ -5,12 +5,21 @@
 <head>
     <title>{% block title %}planner{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="{% static 'planner/bootstrap/bootstrap.min.css' %}">
+
     <link rel="stylesheet" href="{% static 'planner/style.css' %}">
 </head>
 
-<body>
-    {% block content %}{% endblock %}
+<body class="" data-bs-theme="dark">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
     <script src="{% static 'planner/main.js' %}"></script>
+
+    <!-- bootstrap -->
+    <script src="{% static 'planner/bootstrap/bootstrap.bundle.min.js' %}"></script>
 </body>
 
 </html>

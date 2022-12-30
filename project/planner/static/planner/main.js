@@ -1,8 +1,10 @@
 function switchWeek(weekId) {
-    let current = document.getElementsByClassName('week--active')[0];
-    if (current != null) {
-        current.classList.remove('week--active');
+    let visibleCurrent = document.getElementsByClassName('week--visible')[0];
+    let visibleNew = document.getElementById(weekId);
+    if (visibleCurrent != null) {
+        visibleCurrent.classList.remove('week--visible');
+        visibleCurrent.classList.add('d-none');
     }
-    console.log(weekId);
-    document.getElementById(weekId).classList.add('week--active');
+    visibleNew.classList.remove('d-none');
+    visibleNew.classList.add('week--visible');
 }
