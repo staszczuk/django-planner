@@ -10,6 +10,12 @@ Clone the project
 git clone https://github.com/staszczuk/django-planner.git
 ```
 
+Go to the `django-planner` directory
+
+```bash
+cd django-planner
+```
+
 Create virtual environment
 
 ```bash
