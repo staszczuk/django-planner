@@ -24,6 +24,7 @@
 <form action="{% url 'planner:add_event' year month day %}" method="post">
     {% csrf_token %}
     <input type="text" name="event--name">
+    <input type="time" name="event--time">
     <input type="submit" value="add">
 </form>
 <a href="{% url 'planner:month' year month %}">back</a>
