@@ -1,5 +1,10 @@
 def prev_month(year, month):
-    if month == 1:
+    if year == 1 and month == 1:
+        return {
+            'year': year,
+            'month': month,
+        }
+    elif month == 1:
         return {
             'year': year - 1,
             'month': 12,
@@ -12,7 +17,12 @@ def prev_month(year, month):
 
 
 def next_month(year, month):
-    if month == 12:
+    if year == 9999 and month == 11:
+        return {
+            'year': year,
+            'month': month,
+        }
+    elif month == 12:
         return {
             'year': year + 1,
             'month': 1,
