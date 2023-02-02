@@ -14,7 +14,7 @@
         {% for day in week %}
         {% if day.date.month == month %}
         <div class="day">
-            <p>
+            <p class="label">
                 <a href="{% url 'planner:day' year month day.date.day %}">{{ day.date.day }}</a>
             </p>
             {% if day.events %}
@@ -27,7 +27,7 @@
         </div>
         {% else %}
         <div class="day">
-            <p>{{ day.date.month }}/{{ day.date.day }}</p>
+            <p class="label">{{ day.date.month }}/{{ day.date.day }}</p>
         </div>
         {% endif %}
         {% endfor %}

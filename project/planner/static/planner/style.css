@@ -1,6 +1,7 @@
-.month {
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+body {
+    background-color: #101010;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .week {
@@ -9,6 +10,44 @@
 }
 
 .day {
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    margin: 0 0 1px 1px;
+    border-right: 1px solid #daf5ff20;
+    border-bottom: 1px solid #daf5ff20;
+    padding: 8px;
+    min-height: 64px;
+}
+
+.day:last-child {
+    border-right: none;
+}
+
+.week:last-child .day {
+    border-bottom: none;
+}
+
+.day .label {
+    margin: 0;
+    text-align: right;
+}
+
+.day .label a {
+    font-weight: 500;
+    color: #daf5ff;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+li {
+    background-color: #56e39f20;
+    margin: 8px 0;
+    padding: 8px;
+}
+
+li:last-child {
+    margin-bottom: 0;
 }
