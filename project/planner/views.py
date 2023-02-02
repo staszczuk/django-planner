@@ -44,8 +44,12 @@ def day(request, year, month, day):
 
 
 def add_event(request, year, month, day):
-    event = Event(date=date(year, month, day),
-                  time=request.POST['event--time'], name=request.POST['event--name'])
+    if request.POST['event--time'] == '':
+        event = Event(date=date(year, month, day),
+                      name=request.POST['event--name'])
+    else:
+        event = Event(date=date(year, month, day),
+                      time=request.POST['event--time'], name=request.POST['event--name'])
     event.save()
     return HttpResponseRedirect(reverse('planner:day', args=(year, month, day)))
 

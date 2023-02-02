@@ -7,7 +7,7 @@ from django.db import models
 
 class Event(models.Model):
     date = models.DateField()
-    time = models.TimeField(default=time(0, 0))
+    time = models.TimeField(null=True)
     name = models.CharField(max_length=128)
 
     def __str__(self):
