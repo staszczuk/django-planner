@@ -14,9 +14,8 @@
         {% for day in week %}
         {% if day.date.month == month %}
         <div class="day">
-            <p class="label">
-                <a href="{% url 'planner:day' year month day.date.day %}">{{ day.date.day }}</a>
-            </p>
+            <a href="{% url 'planner:day' year month day.date.day %}" class="add_button">Add event</a>
+            <p class="label">{{ day.date.day }}</p>
             {% if day.events %}
             <ul class="events">
                 {% for event in day.events %}

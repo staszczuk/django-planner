@@ -1,7 +1,11 @@
 body {
     background-color: #101010;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Sofia Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 700;
 }
 
 .week {
@@ -10,6 +14,7 @@ body {
 }
 
 .day {
+    position: relative;
     margin: 0 0 1px 1px;
     border-right: 1px solid #daf5ff20;
     border-bottom: 1px solid #daf5ff20;
@@ -28,12 +33,25 @@ body {
 .day .label {
     margin: 0;
     text-align: right;
+    font-weight: 500;
 }
 
-.day .label a {
-    font-weight: 500;
-    color: #daf5ff;
+.add_button {
+    color: #ffffff40;
     text-decoration: none;
+    display: none;
+}
+
+.add_button:hover {
+    color: #ffffff80;
+}
+
+.day:hover .add_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline;
+    padding: 8px;
 }
 
 ul {
@@ -46,6 +64,7 @@ li {
     background-color: #56e39f20;
     margin: 8px 0;
     padding: 8px;
+    border-radius: 4px;
 }
 
 li:last-child {
